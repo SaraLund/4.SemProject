@@ -1,44 +1,26 @@
 package com.fynsantikvariat.Models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Book {
-
     @Id
-    @GeneratedValue
-    private Integer BookId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long BookId;
     @Column
     private String ISBN;
+    @Column
+    private String Title;
     @Column
     private String AuthorName;
     @Column
     private double Price;
 
-    public Book(int bookId, String ISBN, String authorName, double price){
-        this.BookId = bookId;
-        this.ISBN = ISBN;
-        this.AuthorName = authorName;
-        this.Price = price;
-    }
-
-    public Book() {
-
-    }
-
-
-    public String toString(){
-        return "Book [id=" + BookId + ", ISBN=" + ISBN + ", AuthorName=" + AuthorName + ", Price=" + Price + "]";
-    }
-
-    public Integer getBookId() {
+    public long getBookId() {
         return BookId;
     }
 
-    public void setBookId(Integer bookId) {
+    public void setBookId(long bookId) {
         BookId = bookId;
     }
 
@@ -48,6 +30,14 @@ public class Book {
 
     public void setISBN(String ISBN) {
         this.ISBN = ISBN;
+    }
+
+    public String getTitle() {
+        return Title;
+    }
+
+    public void setTitle(String title) {
+        Title = title;
     }
 
     public String getAuthorName() {

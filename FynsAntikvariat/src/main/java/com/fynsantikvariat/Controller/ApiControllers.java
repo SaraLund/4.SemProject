@@ -1,7 +1,7 @@
-package com.yttutorial.rest.Controller;
+package com.fynsantikvariat.Controller;
 
-import Repo.UserRepo;
-import com.yttutorial.rest.Models.User;
+import com.fynsantikvariat.Models.Book;
+import com.fynsantikvariat.Repos.BookRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,16 +10,19 @@ import java.util.List;
 
 @RestController
 public class ApiControllers {
-    @Autowired
-    private UserRepo userRepo;
+    private final BookRepo bookRepo;
+
+    public ApiControllers(BookRepo bookRepo) {
+        this.bookRepo = bookRepo;
+    }
 
     @GetMapping(value="/")
     public String getPage(){
         return "Welcome";
     }
 
-    @GetMapping(value = "/users")
-    public List<User> getUsers(){
-        return userRepo.findAll();
+    @GetMapping(value = "/books")
+    public List<Book> getBooks(){
+        return bookRepo.findAll();
     }
 }

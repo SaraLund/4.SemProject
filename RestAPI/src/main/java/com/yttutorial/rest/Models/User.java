@@ -1,12 +1,19 @@
 package com.yttutorial.rest.Models;
 
+import jakarta.persistence.*;
 
 @Entity
 public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @Column
     private String firstName;
+    @Column
     private String lastName;
+    @Column
     private int age;
+    @Column
     private String occupation;
 
     public long getId() {
