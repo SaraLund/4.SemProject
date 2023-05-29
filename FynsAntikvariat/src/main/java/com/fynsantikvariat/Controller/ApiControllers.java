@@ -4,6 +4,8 @@ import com.fynsantikvariat.Models.Book;
 import com.fynsantikvariat.Repos.BookRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -23,6 +25,13 @@ public class ApiControllers {
 
     @GetMapping(value = "/books")
     public List<Book> getBooks(){
+
         return bookRepo.findAll();
     }
+
+    /*@PostMapping(value = "/save")
+    public String saveBook(@RequestBody Book book){
+        BookRepo.save(book);
+
+    }*Y
 }
